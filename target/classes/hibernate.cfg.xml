@@ -20,7 +20,7 @@
         <property name="format_sql">true</property>
 
         <!-- Автоматичне створення і оновлення структури БД -->
-        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Маппінг класів-->
 

@@ -1,10 +1,10 @@
-package Main.DAO;
+package Main.DAO.Interfaces;
 
 
 import Main.Entity.Skills;
 import Main.Utils;
 
-public interface IDAOSkill extends IDAO<Skills, Long> {
+public interface ISkillDAO extends IDAO<Skills> {
     public void create(Skills skills);
 
     public void delete(Skills skills);

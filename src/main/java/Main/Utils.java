@@ -8,7 +8,7 @@ public class Utils {
     private SessionFactory sessionFactory;
     private static Session session;
 
-    public void startSessionFactoryAndSession(){
+    public void startSessionFactory(){
         sessionFactory = new Configuration().configure().buildSessionFactory();
         session = sessionFactory.openSession();
     }
@@ -16,4 +16,11 @@ public class Utils {
     public static Session getSession(){
         return session;
     }
+
+    public void closeSessionFactory(){
+        session.close();
+        sessionFactory.close();
+    }
+
+
 }

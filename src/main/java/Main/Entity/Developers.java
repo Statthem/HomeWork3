@@ -1,13 +1,15 @@
 package Main.Entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "DEVELOPERS")
 public class Developers {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "ID")
     private long id;
 
@@ -16,6 +18,40 @@ public class Developers {
 
     @Column(name = "SECOND_NAME")
     private String second_name;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "developers_skills", joinColumns = {@JoinColumn(name = "developer_id")},
+            inverseJoinColumns = {@JoinColumn(name = "skill_id")})
+    private Set<Skills> skills;
+
+    public Set<Skills> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Set<Skills> skills) {
+        this.skills = skills;
+    }
+
+    public Set<Projects> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<Projects> projects) {
+        this.projects = projects;
+    }
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "developers_projects", joinColumns = {@JoinColumn(name = "developer_id")},
+            inverseJoinColumns = {@JoinColumn(name = "project_id")})
+    private Set<Projects> projects;
+
+    public Developers(String first_name, String second_name) {
+        this.first_name = first_name;
+        this.second_name = second_name;
+
+    }
+
+
 
     public long getId() {
         return id;

@@ -1,9 +1,9 @@
-package Main.DAO;
+package Main.DAO.Interfaces;
 
 import Main.Entity.Developers;
 import Main.Utils;
 
-public interface IDAODeveloper extends IDAO <Developers,Long>{
+public interface IDevelopersDAO extends IDAO <Developers>{
 
     public void create(Developers developer);
 

@@ -1,9 +1,9 @@
-package Main.DAO;
+package Main.DAO.Interfaces;
 
 import Main.Entity.Customers;
 import Main.Utils;
 
-public interface IDAOCustomers extends IDAO <Customers,Long>{
+public interface ICustomersDAO extends IDAO <Customers>{
     public void create(Customers customers);
 
     public void delete(Customers customers);

@@ -1,9 +1,9 @@
-package Main.DAO;
+package Main.DAO.Interfaces;
 
 import Main.Entity.Projects;
 import Main.Utils;
 
-public interface IDAOProjects extends IDAO<Projects, Long> {
+public interface IProjectsDAO extends IDAO<Projects> {
 
     public void create(Projects projects);
 

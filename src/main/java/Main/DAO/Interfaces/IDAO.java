@@ -1,8 +1,8 @@
-package Main.DAO;
+package Main.DAO.Interfaces;
 
 import java.io.Serializable;
 
-public interface IDAO<T,ID extends Serializable>{
+public interface IDAO<T>{
 
     public void create(T entity);
 
@@ -10,6 +10,6 @@ public interface IDAO<T,ID extends Serializable>{
 
     public void update(T entity);
 
-    public T read(ID id);
+    public T read(T entity);
 
 }

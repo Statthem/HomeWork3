@@ -1,9 +1,11 @@
 package Main.Entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name = "SKILLS")
+@Table(name = "SKILLS", uniqueConstraints = {
+@UniqueConstraint(columnNames = "skill")})
 public class Skills {
 
     @Id
@@ -13,6 +15,17 @@ public class Skills {
 
     @Column(name = "SKILL")
     private String skill;
+
+
+    public Skills(String skill, Set<Developers> developers) {
+        this.skill = skill;
+        this.developers = developers;
+    }
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "developers_skills", joinColumns = {@JoinColumn(name = "skill_id")},
+            inverseJoinColumns = {@JoinColumn(name = "developer_id")})
+    private Set<Developers> developers;
 
     public long getId() {
         return id;
@@ -28,6 +41,18 @@ public class Skills {
 
     public void setSkill(String skill) {
         this.skill = skill;
+    }
+
+    public Skills(String skill) {
+        this.skill = skill;
+    }
+
+    public Set<Developers> getDevelopers() {
+        return developers;
+    }
+
+    public void setDevelopers(Set<Developers> developers) {
+        this.developers = developers;
     }
 
     @Override
