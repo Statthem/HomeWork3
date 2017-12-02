@@ -1,7 +1,6 @@
 package Main.DAO.Interfaces;
 
 import Main.Entity.Companies;
-import Main.Utils;
 
 public interface ICompaniesDAO extends IDAO <Companies> {
 

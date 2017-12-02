@@ -1,7 +1,6 @@
 package Main.DAO.Interfaces;
 
 import Main.Entity.Projects;
-import Main.Utils;
 
 public interface IProjectsDAO extends IDAO<Projects> {
 
@@ -11,9 +10,8 @@ public interface IProjectsDAO extends IDAO<Projects> {
 
     public void update(Projects projects);
 
-    public Projects read(Long id);
+    public Projects read(Projects projects);
 
-    public default boolean exists(Projects projects) {
-        return Utils.getSession().get(Projects.class, new Long(projects.getId())) != null;
-    }
+    public long exists(Projects projects);
+
 }

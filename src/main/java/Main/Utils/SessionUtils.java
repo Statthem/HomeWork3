@@ -1,10 +1,11 @@
-package Main;
+package Main.Utils;
 
+import Main.Main;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class Utils {
+public class SessionUtils {
     private SessionFactory sessionFactory;
     private static Session session;
 

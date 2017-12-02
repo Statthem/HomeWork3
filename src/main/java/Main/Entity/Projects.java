@@ -22,6 +22,10 @@ public class Projects {
         this.project_name = project_name;
         this.project_description = project_description;
     }
+    public Projects() {
+
+    }
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "developers_projects", joinColumns = {@JoinColumn(name = "developer_id")},
             inverseJoinColumns = {@JoinColumn(name = "project_id")})

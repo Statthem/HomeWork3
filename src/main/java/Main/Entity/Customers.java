@@ -46,4 +46,12 @@ public class Customers {
                 ", costumer_name='" + costumer_name + '\'' +
                 '}';
     }
+
+    public Set<Projects> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<Projects> projects) {
+        this.projects = projects;
+    }
 }

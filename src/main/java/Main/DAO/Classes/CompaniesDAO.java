@@ -1,8 +1,7 @@
 package Main.DAO.Classes;
 
 import Main.DAO.Interfaces.ICompaniesDAO;
-import Main.Entity.Companies;
-import Main.Utils;
+import Main.Utils.SessionUtils;
 import org.hibernate.HibernateException;
 
 import org.hibernate.Query;
@@ -13,8 +12,8 @@ public class CompaniesDAO<Companies,Long> implements ICompaniesDAO {
     public void create(Main.Entity.Companies companies) {
                 Transaction t = null;
                 try {
-                    t = Utils.getSession().beginTransaction();
-                    Utils.getSession().save(companies);
+                    t = SessionUtils.getSession().beginTransaction();
+                    SessionUtils.getSession().save(companies);
                     t.commit();
                 } catch (HibernateException e) {
                     e.printStackTrace();
@@ -27,8 +26,8 @@ public class CompaniesDAO<Companies,Long> implements ICompaniesDAO {
     public void delete(Main.Entity.Companies companies) {
         Transaction t = null;
         try {
-            t = Utils.getSession().beginTransaction();
-            Utils.getSession().delete(companies);
+            t = SessionUtils.getSession().beginTransaction();
+            SessionUtils.getSession().delete(companies);
             t.commit();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -40,8 +39,8 @@ public class CompaniesDAO<Companies,Long> implements ICompaniesDAO {
     public void update(Main.Entity.Companies companies) {
         Transaction t = null;
         try {
-            t = Utils.getSession().beginTransaction();
-            Utils.getSession().update(companies);
+            t = SessionUtils.getSession().beginTransaction();
+            SessionUtils.getSession().update(companies);
             t.commit();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -54,7 +53,7 @@ public class CompaniesDAO<Companies,Long> implements ICompaniesDAO {
         long id = companies.getId();
         Main.Entity.Companies companie = null;
         try {
-            Query query = Utils.getSession().createQuery("Select c from Companies c Where c.id =:id");
+            Query query = SessionUtils.getSession().createQuery("Select c from Companies c Where c.id =:id");
             query.setParameter("id", id);
             companie = (Main.Entity.Companies) query.setMaxResults(1).uniqueResult();
         } catch (HibernateException e) {
@@ -69,13 +68,14 @@ public class CompaniesDAO<Companies,Long> implements ICompaniesDAO {
     public long exists(Main.Entity.Companies companies) {
         long companieId = 0;
         try {
-            Query query = Utils.getSession().createQuery("Select c.id from Companies c Where c.companie_name =:name");
+            Query query = SessionUtils.getSession().createQuery("Select c.id from Companies c Where c.companie_name =:name");
             query.setParameter("name", companies.getCompanie_name());
             companieId = (long) query.setMaxResults(1).uniqueResult();
         } catch (HibernateException e) {
             e.printStackTrace();
-        }
-        System.out.println("companieId = " + companieId);
+        }catch (NullPointerException e){ }
+
+     //   System.out.println("companieId = " + companieId);
         return companieId;
     }
 

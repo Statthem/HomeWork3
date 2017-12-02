@@ -1,7 +1,6 @@
 package Main.DAO.Interfaces;
 
 import Main.Entity.Developers;
-import Main.Utils;
 
 public interface IDevelopersDAO extends IDAO <Developers>{
 
@@ -11,9 +10,7 @@ public interface IDevelopersDAO extends IDAO <Developers>{
 
     public void update(Developers developer);
 
-    public Developers read(Long id);
+    public Developers read(Developers developer);
 
-    public default boolean exists(Developers developers){
-        return Utils.getSession().get(Developers.class,new Long (developers.getId())) != null;
-    }
+    public long exists(Developers developers);
 }

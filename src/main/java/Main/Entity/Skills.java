@@ -21,6 +21,9 @@ public class Skills {
         this.skill = skill;
         this.developers = developers;
     }
+    public Skills() {
+
+    }
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "developers_skills", joinColumns = {@JoinColumn(name = "skill_id")},
@@ -59,7 +62,7 @@ public class Skills {
     public String toString() {
         return "Skills{" +
                 "id=" + id +
-                ", skill='" + skill + '\'' +
+                ", skill='" + skill.toString() + '\'' +
                 '}';
     }
 }

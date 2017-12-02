@@ -50,6 +50,9 @@ public class Developers {
         this.second_name = second_name;
 
     }
+    public Developers() {
+
+    }
 
 
 
@@ -83,6 +86,8 @@ public class Developers {
                 "id=" + id +
                 ", first_name='" + first_name + '\'' +
                 ", second_name='" + second_name + '\'' +
+                ", skills=" + skills +
+                ", projects=" + projects + "\n" +
                 '}';
     }
 }
